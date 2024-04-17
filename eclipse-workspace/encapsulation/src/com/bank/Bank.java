@@ -1,12 +1,12 @@
 package com.bank;
 public class Bank {
-    private String accountNumber;
+    private long accountNumber;
     private double balance;
     private String accountHolderName;
     private String email;
     private String phoneNumber;
     // Constructor
-    public Bank(String accountNumber, double balance, String accountHolderName, String email,String phoneNumber) {
+    public Bank(long accountNumber, double balance, String accountHolderName, String email,String phoneNumber) {
         this.accountNumber = accountNumber;
         this.balance = balance;
         this.accountHolderName = accountHolderName;
@@ -14,10 +14,10 @@ public class Bank {
         this.phoneNumber =phoneNumber ;
     }
     // Getter and setter methods for each private field
-    public String getAccountNumber() {
+    public long getAccountNumber() {
         return accountNumber;
     }
-    public void setAccountNumber(String accountNumber) {
+    public void setAccountNumber(long accountNumber) {
         this.accountNumber = accountNumber;
     }
     public double getBalance() {
