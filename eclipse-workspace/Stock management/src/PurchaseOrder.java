@@ -1,11 +1,11 @@
 import java.util.Date;
 public class PurchaseOrder {
-    private int id;
-    private Item item;
-    private Supplier supplier;
-    private int quantity;
-    private double totalPrice;
-    private Date orderDate;
+    public int id;
+    public Item item;
+    public Supplier supplier;
+    public int quantity;
+    public double totalPrice;
+    public Date orderDate;
     public PurchaseOrder(int id, Item item, Supplier supplier, int quantity, double totalPrice, Date orderDate) {
         this.id = id;
         this.item = item;
@@ -14,11 +14,11 @@ public class PurchaseOrder {
         this.totalPrice = totalPrice;
         this.orderDate = orderDate;
     }
-    public double purchase()
-    {
-      System.out.println("Total amount is"+(quantity*totalPrice));
-		return totalPrice;
-    }
+   // public double purchase()
+    //{
+      //System.out.println("Total amount is"+(quantity*totalPrice));
+		//return totalPrice;
+    //}
  
     public int getId() {
         return id;
@@ -33,22 +33,14 @@ public class PurchaseOrder {
     public void setItem(Item item) {
         this.item = item;
     }
-
     public Supplier getSupplier() {
         return supplier;
     }
-
     public void setSupplier(Supplier supplier) {
         this.supplier = supplier;
     }
     public int getQuantity() {
         return quantity;
-    }
-    public void setQuantity(int quantity) {
-        if (quantity < 0) {
-            throw new IllegalArgumentException("Quantity cannot be negative");
-        }
-        this.quantity = quantity;
     }
     public double getTotalPrice() {
         return totalPrice;

@@ -1,15 +1,48 @@
 public class Item {
-    private int id;
-    private String name;
-    private double price;
-    private int quantity;
+    public int id;
+    public String name;
+    public double price;
+    public int quantity;
+	public int totalPowder;
+	String customerIdPattern;
+	String yesNoPattern;
+	public void setYesNoPattern(String yesNoPattern) {
+		if(yesNoPattern.matches("[a-z]+"))
+		{
+		  this.yesNoPattern = yesNoPattern;
+		}
+		else {
+			System.out.println("lowercase letters are only allowed");
+		}
+	}
+	public String getYesNoPattern() {
+		return yesNoPattern;
+	}
+	
+	
+	public void setCustomerIdPattern(String customerIdPattern) {
+		if(customerIdPattern.matches("^[A-Za-z0-9]{6}$"))
+		{
+		  this.customerIdPattern = customerIdPattern;
+		}
+		else
+		{
+			System.out.println("6 alphanumeric characters are allowed");
+		}
+		
+	}
+	public String getCustomerIdPattern() {
+		return customerIdPattern;
+	}
  public Item(int id, String name, double price, int quantity) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.quantity = quantity;
     }
-    public int getId() {
+    public Item() {
+}
+	public int getId() {
         return id;
     }
     public void setId(int id) {
@@ -45,4 +78,13 @@ public class Item {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+	public void settotalPowder(int totalPowder) {
+		this.totalPowder=totalPowder;
+		
+	}
+	public int gettotalPowder() {
+		// TODO Auto-generated method stub
+		return totalPowder;
+	}
+
 }

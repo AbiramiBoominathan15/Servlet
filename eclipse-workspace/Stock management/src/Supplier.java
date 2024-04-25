@@ -1,11 +1,11 @@
 import java.util.Date;
 public class Supplier {
-    private int id;
-    private String item;
-    private Supplier supplier;
-    private int quantity;
-    private double totalPrice;
-    private Date orderDate;
+    public int id;
+    public String item;
+    public Supplier supplier;
+    public int quantity;
+    public double totalPrice;
+    public Date orderDate;
     public Supplier(int id, String item, Supplier supplier, int quantity, double totalPrice, Date orderDate) {
         this.id = id;
         this.item = item;
