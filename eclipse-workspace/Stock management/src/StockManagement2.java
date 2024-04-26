@@ -1,36 +1,42 @@
 import java.util.Date;
 import java.util.Scanner;
 public class StockManagement2 {
-	 int totalPowder;
+	int totalPowder;
 	public static void main(String[] args) {
 		int num_product;
 		StockManagement2 m = new StockManagement2();
 		Item item = new Item(1, null, 10.99, 100);
-		Scanner sc= new Scanner(System.in);
-		System.out.println("***Stock Management Details***");
+		Scanner sc = new Scanner(System.in);
+		System.out.println("\t\t***Stock Management Details***\t\t");
 		System.out.println("Enter CustomerID:");
 		String customerIdPattern = sc.nextLine();
-		item = new Item();
 		item.setCustomerIdPattern(customerIdPattern);
 		System.out.print("Are you a regular customer? (yes/no): ");
 		String yesNoPattern = sc.nextLine();
-		item = new Item();
 		item.setCustomerIdPattern(yesNoPattern);
-		System.out.println("choose the section \n\nMasalaPowder,\ncosmetics,\nstationary");
+		System.out.println("\n");
+		System.out.println("_______________________________________________________________________________________");
+		System.out.println("\tchoose the section \n\n*MasalaPowder,\n*cosmetics,\n*stationary");
 		String[] str = { "MasalaPowder", "cosmetics", "stationary" };
 		System.out.println("Enter section name:");
 		String sectionName = sc.nextLine();
-		int totalPowder1 =0;
+		System.out.println(sectionName);
+		item.setSectionName(sectionName);
+		System.out.println(item.toString());
+		int totalPowder1 = 0;
 		switch (sectionName) {
 		case "MasalaPowder":
-			System.out.println("1.Rasampowder\n2.SambarPowder\n 3.Rice Powder\n 4.CurryLeavesPowder\n5.TurmericPowder");
+			System.out
+					.println("--------------------------------------------------------------------------------------");
+			System.out.println("Rasampowder\t SambarPowder\t Rice Powder\t CurryLeavesPowder\t TurmericPowder");
+			System.out
+					.println("---------------------------------------------------------------------------------------");
 			System.out.println("Enter Product name:");
 			String itemName = sc.nextLine();
-			item = new Item();
 			item.setName(itemName);
-			System.out.println("Enter Quantity(Gram):"); 
-	        int quantity = sc.nextInt(); 
-	        System.out.println("quantity:"+quantity);
+			System.out.println("Enter Quantity(Gram):");
+			int quantity = sc.nextInt();
+			System.out.println("quantity:" + quantity);
 			double price;
 			switch (itemName) {
 			case "Rasampowder":
@@ -67,14 +73,16 @@ public class StockManagement2 {
 				System.out.println("Invalid choice");
 				return;
 			}
+			// System.out.println(item.toString());
 //			item.setPrice(price);
 //			item.settotalPowder(totalPowder1);
 			break;
 		case "cosmetics":
-			System.out.println("1.Lipstick\n 2.eyeliner \n 3.powder\n 4.RosePowder\n 5.Hairstraightner");
+			System.out.println("-------------------------------------------------------------------------------");
+			System.out.println("Lipstick | \t eyeliner |\t powder|\t RosePowder|\t Hairstraightner");
+			System.out.println("-------------------------------------------------------------------------------");
 			System.out.println("\tEnter Product name:");
 			String itemName1 = sc.nextLine();
-			item = new Item();
 			item.setName(itemName1);
 			double price1;
 			switch (itemName1) {
@@ -89,7 +97,7 @@ public class StockManagement2 {
 				totalPowder1 = 3000;
 				item.setPrice(price1);
 				item.settotalPowder(totalPowder1);
-				
+
 				break;
 			case "powder":
 				price1 = 50;
@@ -116,10 +124,11 @@ public class StockManagement2 {
 			item.setPrice(price1);
 			break;
 		case "stationary":
-			System.out.println("1.pen \n 2.pencile\n 3.rubber\n 4.scale \n 5.box\n Note\n 6.Book");
-			System.out.println("\t Enter Product name:");
+			System.out.println("-------------------------------------------------------------------------------");
+			System.out.println("pen | \tpencile | \t rubber | \tscale | \tbox\t | Note |\tBook");
+			System.out.println("-------------------------------------------------------------------------------");
+			System.out.println("\nEnter Product name:");
 			String itemName11 = sc.nextLine();
-			item = new Item();
 			item.setName(itemName11);
 			double price11;
 			switch (itemName11) {
@@ -176,14 +185,14 @@ public class StockManagement2 {
 			break;
 		}
 		}
-		System.out.println("Customer Details:");
-		System.out.println("Enter numberofproduct:");
+		System.out.println("\t Customer Details:");
+		System.out.println("\nEnter numberofproduct:");
 		int num_product1 = sc.nextInt();
-		System.out.println("Customer purchased product name:" + item.getName());
+		System.out.println("\nCustomer purchased product name:" + item.getName());
 		// System.out.println("********");
 		System.out.println("\n");
 		System.out.println("\tSupplier Details");
-		Supplier supplier = new Supplier(101, null, null, 50, 549.50, new Date());
+		Supplier supplier = new Supplier(101, null, 549.50, new Date());
 		System.out.println("Supplier ID: " + supplier.getId());
 		System.out.println("Itemname: " + item.getName());
 		System.out.println("OrderDate: " + supplier.getOrderDate());
@@ -191,45 +200,44 @@ public class StockManagement2 {
 		System.out.println("\n");
 		System.out.println(" \tPurchase Order Details");
 		System.out.println("--------------------------");
-		PurchaseOrder po = new PurchaseOrder(1, item, supplier, 50, 549, null);
+		PurchaseOrder po = new PurchaseOrder(1, item, 50, null);
 		System.out.println("Purchase ID:" + po.getId());
 		m.totalPrice(item.getPrice(), (int) num_product1);
 		System.out.println("________________________");
 		System.out.println(" \n \tAdmin Details");
-		m.soldOutPockets(item.gettotalPowder(), num_product1);
+		item.soldOutPockets(item.gettotalPowder(), num_product1, item.getSectionName(), item);
 		sc.close();
 	}
-	int totalPowder1 =0;
+
+	int totalPowder1 = 0;
 	public int totalPrice;
 	static double discount = 0;
-	public void soldOutPockets(int totalPowder1, int num_product1) {
-		int soldOut1 = totalPowder1 - num_product1;
-		//System.out.println("Available Stocks for " + item.getName() + " are: " + soldOut1);
 
-		System.out.println("Available Stocks are:"+ soldOut1);	
-	}
 	public void totalPrice(double price, int num_product1) {
 		double totalPrice = price * num_product1;
 		System.out.println("Total price is " + totalPrice);
-		if (totalPrice > 1000 && totalPrice<1500) {
+		if (totalPrice > 1000 && totalPrice < 1500) {
 			discount = 0.05 * totalPrice;
 			totalPrice -= discount;
 			System.out.println("Give 5% discount: " + totalPrice);
 
-		} else if (totalPrice >=1500 && totalPrice<3000) {
+		} else if (totalPrice >= 1500 && totalPrice < 3000) {
 			discount = 0.1 * totalPrice;
 			totalPrice -= discount;
 			System.out.println("Give 10% discount: " + totalPrice);
-		} else if (totalPrice >= 3000 && totalPrice<5000) {
+		} else if (totalPrice >= 3000 && totalPrice < 5000) {
 			discount = 0.15 * totalPrice;
 			totalPrice -= discount;
 			System.out.println("Give 15% discount: " + totalPrice);
-		} else if ( totalPrice>=5000 && totalPrice<=10000) {
+		} else if (totalPrice >= 5000 && totalPrice < 10000) {
 			discount = 0.2 * totalPrice;
 			totalPrice -= discount;
 			System.out.println("Give 20% discount: " + totalPrice);
-		} 
-		else {
+		} else if (totalPrice >= 10000 && totalPrice <= 100000) {
+			discount = 0.21 * totalPrice;
+			totalPrice -= discount;
+			System.out.println("Give 20% discount: " + totalPrice);
+		} else {
 			System.out.println("Discount not approved for your product, price is too low");
 			System.out.println("Offers are only available with our coupon code");
 		}
