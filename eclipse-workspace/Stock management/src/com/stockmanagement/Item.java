@@ -1,4 +1,8 @@
-public class Item {
+package com.stockmanagement;
+
+import java.sql.Date;
+
+public class Item extends AbstractItem implements InterfaceItem {
 	public int id;
 	public String name;
 	public double price;
@@ -9,6 +13,15 @@ public class Item {
 	public int num_product1;
 	public int totalPowder1;
 	public String sectionName;
+	public Date orderDate;
+
+	public Date getOrderDate() {
+		return orderDate;
+	}
+
+	public void setOrderDate(Date orderDate) {
+		this.orderDate = orderDate;
+	}
 
 	public String getSectionName() {
 		return sectionName;
@@ -36,7 +49,6 @@ public class Item {
 		} else {
 			System.out.println("6 alphanumeric characters are allowed");
 		}
-
 	}
 
 	public String getCustomerIdPattern() {
@@ -57,16 +69,19 @@ public class Item {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	@Override
 	public String toString() {
 		return "Item [id=" + id + ", name=" + name + ", price=" + price + ", quantity=" + quantity + ", totalPowder="
 				+ totalPowder + ", customerIdPattern=" + customerIdPattern + ", yesNoPattern=" + yesNoPattern
 				+ ", num_product1=" + num_product1 + ", totalPowder1=" + totalPowder1 + ", sectionName=" + sectionName
-				+ "]";
+				+ ", orderDate=" + orderDate + ", getOrderDate()=" + getOrderDate() + ", getSectionName()="
+				+ getSectionName() + ", getYesNoPattern()=" + getYesNoPattern() + ", getCustomerIdPattern()="
+				+ getCustomerIdPattern() + ", getId()=" + getId() + ", getName()=" + getName() + ", getPrice()="
+				+ getPrice() + ", getQuantity()=" + getQuantity() + ", gettotalPowder()=" + gettotalPowder() + "]";
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -99,25 +114,28 @@ public class Item {
 
 	public void settotalPowder(int totalPowder) {
 		this.totalPowder = totalPowder;
-
 	}
 
 	public int gettotalPowder() {
-		// TODO Auto-generated method stub
 		return totalPowder;
 	}
-
+	@Override
+	public void noReturn() {
+		System.out.println("Damaged pockets are cannot be accepted");
+		
+	}
+	@Override
 	public void soldOutPockets(int totalPowder1, int num_product1, String sectionName, Item item) {
-		int soldOut1 = totalPowder1 - num_product1;
-		// System.out.println("Available Stocks for " + item.getName() + " are: " +
-		// soldOut1);
-
+	 int soldOut1 = totalPowder1 - num_product1;
 		System.out.println(
 				"Available Stocks are:" + soldOut1 + " " + name + " " + "Section Name:" + " " + item.getSectionName());
+
+	}
+	public  void prepaidMoney()
+	{
+		System.out.println("customer must pay their money previously");
 	}
 }
 
-
-
-
+	
 

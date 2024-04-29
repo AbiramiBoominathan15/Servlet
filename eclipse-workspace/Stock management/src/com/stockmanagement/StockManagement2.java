@@ -1,7 +1,11 @@
+package com.stockmanagement;
+
 import java.util.Date;
 import java.util.Scanner;
+
 public class StockManagement2 {
 	int totalPowder;
+
 	public static void main(String[] args) {
 		int num_product;
 		StockManagement2 m = new StockManagement2();
@@ -79,7 +83,7 @@ public class StockManagement2 {
 			break;
 		case "cosmetics":
 			System.out.println("-------------------------------------------------------------------------------");
-			System.out.println("Lipstick | \t eyeliner |\t powder|\t RosePowder|\t Hairstraightner");
+			System.out.println("Lipstick | \t eyeliner |\t powder|\t RosePowder|\t Hairstraightner|");
 			System.out.println("-------------------------------------------------------------------------------");
 			System.out.println("\tEnter Product name:");
 			String itemName1 = sc.nextLine();
@@ -192,24 +196,25 @@ public class StockManagement2 {
 		// System.out.println("********");
 		System.out.println("\n");
 		System.out.println("\tSupplier Details");
-		Supplier supplier = new Supplier(101, null, 549.50, new Date());
-		System.out.println("Supplier ID: " + supplier.getId());
+	//	Supplier supplier = new Supplier();
+		System.out.println("Supplier ID: " + item.getId());
 		System.out.println("Itemname: " + item.getName());
-		System.out.println("OrderDate: " + supplier.getOrderDate());
+		System.out.println("OrderDate: " + item.getOrderDate());
 		System.out.println("\t_____________");
 		System.out.println("\n");
 		System.out.println(" \tPurchase Order Details");
 		System.out.println("--------------------------");
-		PurchaseOrder po = new PurchaseOrder(1, item, 50, null);
-		System.out.println("Purchase ID:" + po.getId());
+		//PurchaseOrder po = new PurchaseOrder();
+		System.out.println("Purchase ID:" + item.getId());
 		m.totalPrice(item.getPrice(), (int) num_product1);
 		System.out.println("________________________");
 		System.out.println(" \n \tAdmin Details");
 		item.soldOutPockets(item.gettotalPowder(), num_product1, item.getSectionName(), item);
+		item.noReturn();
+		item.prepaidMoney();
 		sc.close();
 	}
-
-	int totalPowder1 = 0;
+	int totalPowder11 = 0;
 	public int totalPrice;
 	static double discount = 0;
 
@@ -243,3 +248,5 @@ public class StockManagement2 {
 		}
 	}
 }
+
+
