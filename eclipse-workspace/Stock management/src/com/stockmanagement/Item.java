@@ -1,8 +1,6 @@
 package com.stockmanagement;
-
 import java.sql.Date;
-
-public class Item extends AbstractItem implements InterfaceItem {
+public class Item {
 	public int id;
 	public String name;
 	public double price;
@@ -14,19 +12,15 @@ public class Item extends AbstractItem implements InterfaceItem {
 	public int totalPowder1;
 	public String sectionName;
 	public Date orderDate;
-
 	public Date getOrderDate() {
 		return orderDate;
 	}
-
 	public void setOrderDate(Date orderDate) {
 		this.orderDate = orderDate;
 	}
-
 	public String getSectionName() {
 		return sectionName;
 	}
-
 	public void setSectionName(String sectionName) {
 		this.sectionName = sectionName;
 	}
@@ -38,11 +32,9 @@ public class Item extends AbstractItem implements InterfaceItem {
 			System.out.println("lowercase letters are only allowed");
 		}
 	}
-
 	public String getYesNoPattern() {
 		return yesNoPattern;
 	}
-
 	public void setCustomerIdPattern(String customerIdPattern) {
 		if (customerIdPattern.matches("^[A-Za-z0-9]{6}$")) {
 			this.customerIdPattern = customerIdPattern;
@@ -50,11 +42,9 @@ public class Item extends AbstractItem implements InterfaceItem {
 			System.out.println("6 alphanumeric characters are allowed");
 		}
 	}
-
 	public String getCustomerIdPattern() {
 		return customerIdPattern;
 	}
-
 	public Item(int id, String name, double price, int quantity) {
 		this.id = id;
 		this.name = name;
@@ -107,7 +97,6 @@ public class Item extends AbstractItem implements InterfaceItem {
 	public int getQuantity() {
 		return quantity;
 	}
-
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
@@ -119,23 +108,5 @@ public class Item extends AbstractItem implements InterfaceItem {
 	public int gettotalPowder() {
 		return totalPowder;
 	}
-	@Override
-	public void noReturn() {
-		System.out.println("Damaged pockets are cannot be accepted");
-		
-	}
-	@Override
-	public void soldOutPockets(int totalPowder1, int num_product1, String sectionName, Item item) {
-	 int soldOut1 = totalPowder1 - num_product1;
-		System.out.println(
-				"Available Stocks are:" + soldOut1 + " " + name + " " + "Section Name:" + " " + item.getSectionName());
 
-	}
-	public  void prepaidMoney()
-	{
-		System.out.println("customer must pay their money previously");
-	}
 }
-
-	
-

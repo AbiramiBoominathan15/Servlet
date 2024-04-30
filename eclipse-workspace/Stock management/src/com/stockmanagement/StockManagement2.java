@@ -1,14 +1,15 @@
 package com.stockmanagement;
-
 import java.util.Date;
 import java.util.Scanner;
 
+@SuppressWarnings("unused")
 public class StockManagement2 {
 	int totalPowder;
-
 	public static void main(String[] args) {
 		int num_product;
 		StockManagement2 m = new StockManagement2();
+		Supplier supplier = new Supplier();
+		Purchase purchase = new Purchase();
 		Item item = new Item(1, null, 10.99, 100);
 		Scanner sc = new Scanner(System.in);
 		System.out.println("\t\t***Stock Management Details***\t\t");
@@ -77,9 +78,6 @@ public class StockManagement2 {
 				System.out.println("Invalid choice");
 				return;
 			}
-			// System.out.println(item.toString());
-//			item.setPrice(price);
-//			item.settotalPowder(totalPowder1);
 			break;
 		case "cosmetics":
 			System.out.println("-------------------------------------------------------------------------------");
@@ -196,7 +194,6 @@ public class StockManagement2 {
 		// System.out.println("********");
 		System.out.println("\n");
 		System.out.println("\tSupplier Details");
-	//	Supplier supplier = new Supplier();
 		System.out.println("Supplier ID: " + item.getId());
 		System.out.println("Itemname: " + item.getName());
 		System.out.println("OrderDate: " + item.getOrderDate());
@@ -204,49 +201,13 @@ public class StockManagement2 {
 		System.out.println("\n");
 		System.out.println(" \tPurchase Order Details");
 		System.out.println("--------------------------");
-		//PurchaseOrder po = new PurchaseOrder();
 		System.out.println("Purchase ID:" + item.getId());
-		m.totalPrice(item.getPrice(), (int) num_product1);
+		purchase.totalPrice(item.getPrice(), (int) num_product1);
 		System.out.println("________________________");
 		System.out.println(" \n \tAdmin Details");
-		item.soldOutPockets(item.gettotalPowder(), num_product1, item.getSectionName(), item);
-		item.noReturn();
-		item.prepaidMoney();
+		supplier.soldOutPockets(item.gettotalPowder(), num_product1, item.getSectionName(), item);
+		supplier.noReturn();
+		supplier.prepaidMoney();
 		sc.close();
 	}
-	int totalPowder11 = 0;
-	public int totalPrice;
-	static double discount = 0;
-
-	public void totalPrice(double price, int num_product1) {
-		double totalPrice = price * num_product1;
-		System.out.println("Total price is " + totalPrice);
-		if (totalPrice > 1000 && totalPrice < 1500) {
-			discount = 0.05 * totalPrice;
-			totalPrice -= discount;
-			System.out.println("Give 5% discount: " + totalPrice);
-
-		} else if (totalPrice >= 1500 && totalPrice < 3000) {
-			discount = 0.1 * totalPrice;
-			totalPrice -= discount;
-			System.out.println("Give 10% discount: " + totalPrice);
-		} else if (totalPrice >= 3000 && totalPrice < 5000) {
-			discount = 0.15 * totalPrice;
-			totalPrice -= discount;
-			System.out.println("Give 15% discount: " + totalPrice);
-		} else if (totalPrice >= 5000 && totalPrice < 10000) {
-			discount = 0.2 * totalPrice;
-			totalPrice -= discount;
-			System.out.println("Give 20% discount: " + totalPrice);
-		} else if (totalPrice >= 10000 && totalPrice <= 100000) {
-			discount = 0.21 * totalPrice;
-			totalPrice -= discount;
-			System.out.println("Give 20% discount: " + totalPrice);
-		} else {
-			System.out.println("Discount not approved for your product, price is too low");
-			System.out.println("Offers are only available with our coupon code");
-		}
-	}
 }
-
-
