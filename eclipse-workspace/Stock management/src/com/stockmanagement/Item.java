@@ -1,5 +1,5 @@
 package com.stockmanagement;
-import java.sql.Date;
+import java.util.Date;
 public class Item {
 	public int id;
 	public String name;
@@ -12,7 +12,7 @@ public class Item {
 	public int totalPowder1;
 	public String sectionName;
 	public Date orderDate;
-	public Date getOrderDate() {
+	public java.util.Date getOrderDate() {
 		return orderDate;
 	}
 	public void setOrderDate(Date orderDate) {

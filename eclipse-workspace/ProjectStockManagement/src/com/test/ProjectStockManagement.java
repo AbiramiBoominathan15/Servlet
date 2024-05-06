@@ -1,25 +1,28 @@
-package com.stockmanagement;
-
+package com.test;
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.function.Supplier;
 
-public class StockManagement2 {
+import com.dao.Purchase;
+import com.dao.StockLogin;
+import com.model.Item;
+import com.util.StockManagementConnection;
+public class ProjectStockManagement {
 	int totalPowder;
-
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		int num_product;
-		StockManagement2 m = new StockManagement2();
-		Supplier supplier = new Supplier();
-		Purchase purchase = new Purchase();
-		Item item = new Item(1, null, 10.99, 100);
-		Scanner sc = new Scanner(System.in);
+		ProjectStockManagement stock = new ProjectStockManagement();
 		System.out.println("\t\t***Stock Management Details***\t\t");
-		System.out.println("Enter CustomerID:");
-		String customerIdPattern = sc.nextLine();
-		item.setCustomerIdPattern(customerIdPattern);
-		System.out.print("Are you a regular customer? (yes/no): ");
-		String yesNoPattern = sc.nextLine();
-		item.setCustomerIdPattern(yesNoPattern);
+		StockLogin login = new StockLogin();
+		String customerId = "";
+		String regularCustomer = "";
+		Item login2 = StockLogin.Login();
+		StockLogin.validateInput(customerId, regularCustomer);
+		com.dao.Supplier supplier = new com.dao.Supplier();
+		Purchase purchase = new Purchase();
+		Item item = new Item();
+		Scanner sc = new Scanner(System.in);
 		System.out.println("\n");
 		System.out.println("_______________________________________________________________________________________");
 		System.out.println("\tchoose the section \n\n*MasalaPowder,\n*cosmetics,\n*stationary");
@@ -30,7 +33,7 @@ public class StockManagement2 {
 		item.setSectionName(sectionName);
 		item.setOrderDate(new Date());
 		System.out.println(item.toString());
-		int totalPowder1 = 0;
+		int totalPowder = 0;
 		switch (sectionName) {
 		case "MasalaPowder":
 			System.out
@@ -48,33 +51,33 @@ public class StockManagement2 {
 			switch (itemName) {
 			case "Rasampowder":
 				price = 25;
-				totalPowder1 = 1000;
+				totalPowder = 1000;
 				item.setPrice(price);
-				item.settotalPowder(totalPowder1);
+				item.settotalPowder(totalPowder);
 				break;
 			case "SambarPowder":
 				price = 35;
-				totalPowder1 = 2000;
+				totalPowder = 2000;
 				item.setPrice(price);
-				item.settotalPowder(totalPowder1);
+				item.settotalPowder(totalPowder);
 				break;
 			case "RicePowder":
 				price = 40;
-				totalPowder1 = 3000;
+				totalPowder = 3000;
 				item.setPrice(price);
-				item.settotalPowder(totalPowder1);
+				item.settotalPowder(totalPowder);
 				break;
 			case "CurryLeavesPowder":
 				price = 40;
-				totalPowder1 = 2500;
+				totalPowder = 2500;
 				item.setPrice(price);
-				item.settotalPowder(totalPowder1);
+				item.settotalPowder(totalPowder);
 				break;
 			case "TurmericPowder":
 				price = 40;
-				totalPowder1 = 1500;
+				totalPowder = 1500;
 				item.setPrice(price);
-				item.settotalPowder(totalPowder1);
+				item.settotalPowder(totalPowder);
 				break;
 			default:
 				System.out.println("Invalid choice");
@@ -92,34 +95,34 @@ public class StockManagement2 {
 			switch (itemName1) {
 			case "Lipstick":
 				price1 = 200;
-				totalPowder1 = 2000;
+				totalPowder = 2000;
 				item.setPrice(price1);
-				item.settotalPowder(totalPowder1);
+				item.settotalPowder(totalPowder);
 				break;
 			case "eyeliner":
 				price1 = 155;
-				totalPowder1 = 3000;
+				totalPowder = 3000;
 				item.setPrice(price1);
-				item.settotalPowder(totalPowder1);
+				item.settotalPowder(totalPowder);
 
 				break;
 			case "powder":
 				price1 = 50;
-				totalPowder1 = 4000;
+				totalPowder = 4000;
 				item.setPrice(price1);
-				item.settotalPowder(totalPowder1);
+				item.settotalPowder(totalPowder);
 				break;
 			case "RosePowder":
 				price1 = 105;
-				totalPowder1 = 5000;
+				totalPowder = 5000;
 				item.setPrice(price1);
-				item.settotalPowder(totalPowder1);
+				item.settotalPowder(totalPowder);
 				break;
 			case "Hairstraightner":
 				price1 = 2000;
-				totalPowder1 = 2000;
+				totalPowder = 2000;
 				item.setPrice(price1);
-				item.settotalPowder(totalPowder1);
+				item.settotalPowder(totalPowder);
 				break;
 			default:
 				System.out.println("Invalid choice");
@@ -138,45 +141,45 @@ public class StockManagement2 {
 			switch (itemName11) {
 			case "pen":
 				price11 = 25;
-				totalPowder1 = 1500;
+				totalPowder = 1500;
 				item.setPrice(price11);
-				item.settotalPowder(totalPowder1);
+				item.settotalPowder(totalPowder);
 				break;
 			case "pencile":
 				price11 = 35;
-				totalPowder1 = 1100;
+				totalPowder = 1100;
 				item.setPrice(price11);
-				item.settotalPowder(totalPowder1);
+				item.settotalPowder(totalPowder);
 				break;
 			case "rubber":
 				price11 = 40;
-				totalPowder1 = 1220;
+				totalPowder = 1220;
 				item.setPrice(price11);
-				item.settotalPowder(totalPowder1);
+				item.settotalPowder(totalPowder);
 				break;
 			case "scale":
 				price11 = 20;
-				totalPowder1 = 1222;
+				totalPowder = 1222;
 				item.setPrice(price11);
-				item.settotalPowder(totalPowder1);
+				item.settotalPowder(totalPowder);
 				break;
 			case "box":
 				price11 = 60;
-				totalPowder1 = 1350;
+				totalPowder = 1350;
 				item.setPrice(price11);
-				item.settotalPowder(totalPowder1);
+				item.settotalPowder(totalPowder);
 				break;
 			case "Note":
 				price11 = 80;
-				totalPowder1 = 1100;
+				totalPowder = 1100;
 				item.setPrice(price11);
-				item.settotalPowder(totalPowder1);
+				item.settotalPowder(totalPowder);
 				break;
 			case "Book":
 				price11 = 180;
-				totalPowder1 = 1300;
+				totalPowder = 1300;
 				item.setPrice(price11);
-				item.settotalPowder(totalPowder1);
+				item.settotalPowder(totalPowder);
 				break;
 			default:
 				System.out.println("Invalid choice");
@@ -210,6 +213,9 @@ public class StockManagement2 {
 		supplier.soldOutPockets(item.gettotalPowder(), num_product1, item.getSectionName(), item);
 		supplier.noReturn();
 		supplier.prepaidMoney();
+	//	StockManagementConnection.insertuser(customerId,regularCustomer,sectionName);
+		StockManagementConnection.insertuser(login2.getCustomerId(), login2.getRegularCustomer(),sectionName,login2.getUsername(),login2.getPassword());
+		StockManagementConnection.read(login2.getUsername(),login2.getPassword(),login2.getRegularCustomer(),login2.sectionName);
 		sc.close();
 	}
 }
