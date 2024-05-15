@@ -49,15 +49,6 @@ public class Item {
     
     
    
-   // public String toString() {
-       // return "Item [id=" + id + ", name=" + name + ", price=" + price + ", quantity=" + quantity + ", totalPowder="
-              //  + totalPowder + ", customerId=" + customerId + ", regularCustomer=" + regularCustomer
-             //   + ", num_product1=" + num_product1 + ", totalPowder1=" + totalPowder1 + ", sectionName=" + sectionName
-            //    + ", orderDate=" + orderDate + ", getCustomerId()=" + getCustomerId() + ", getRegularCustomer()="
-            //    + getRegularCustomer() + ", getOrderDate()=" + getOrderDate() + ", getSectionName()=" + getSectionName()
-            //    + ", getId()=" + getId() + ", getName()=" + getName() + ", getPrice()=" + getPrice()
-          //      + ", getQuantity()=" + getQuantity() + ", gettotalPowder()=" + gettotalPowder() + "]";
-   // }
 
     public String getCustomerId() {
         return customerId;

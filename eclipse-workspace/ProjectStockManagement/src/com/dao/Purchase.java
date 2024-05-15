@@ -5,6 +5,7 @@ public class Purchase {
     public int totalPrice;
     static double discount = 0;
 
+    
     public void totalPrice(double price, int num_product1) {
         double totalPrice = price * num_product1;
         System.out.println("Total price is " + totalPrice);

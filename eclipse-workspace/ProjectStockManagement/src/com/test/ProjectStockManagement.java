@@ -212,6 +212,7 @@ public class ProjectStockManagement {
 		System.out.println(" \n \tAdmin Details");
 		supplier.soldOutPockets(item.gettotalPowder(), num_product1, item.getSectionName(), item);
 		supplier.noReturn();
+		
 		supplier.prepaidMoney();
 	//	StockManagementConnection.insertuser(customerId,regularCustomer,sectionName);
 		StockManagementConnection.insertuser(login2.getCustomerId(), login2.getRegularCustomer(),sectionName,login2.getUsername(),login2.getPassword());

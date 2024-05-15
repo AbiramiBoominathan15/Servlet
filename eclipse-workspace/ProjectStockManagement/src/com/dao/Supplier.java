@@ -14,6 +14,7 @@ public class Supplier extends AbstractItem implements InterfaceItem {
         System.out.println(
                 "*Available Stocks are:" + soldOut1 + " " + name + " " + "Section Name:" + " " + item.getSectionName());
     }
+    
 
     public void prepaidMoney() {
         System.out.println("*customer must pay their money previously");

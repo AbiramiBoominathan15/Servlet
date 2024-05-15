@@ -86,6 +86,7 @@ public class StockManagementConnection {
           System.out.println(" Name : " + username
                   + "\t\t password : " + password+"\tregularCustomer "+regularCustomer+"\tsectionName:"+sectionName);
       }
+      
 System.out.println(rows+" retrieved");
 }
 

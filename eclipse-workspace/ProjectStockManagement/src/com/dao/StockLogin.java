@@ -36,6 +36,8 @@ public class StockLogin {
 				System.out.println("Logged in with Customer ID: " +item.getCustomerId());
 				break;
 				
+				
+				
 
 			} 
 			else if (regularCustomer.equals("yes")) {
