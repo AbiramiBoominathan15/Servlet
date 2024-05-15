@@ -31,6 +31,9 @@ public class ServletA extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		System.out.println("do get method");
+		
+		
+		
 		String Name= request.getParameter("Name");
 		String password= request.getParameter("password");
 		String age= request.getParameter("age");
