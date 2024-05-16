@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>REGISTRATION FORM</title>
+<style>
+    body {
+        background-color: skyblue;
+    }
+    .container {
+        width: 50%; 
+        margin: auto;
+        padding: 20px;
+    }
+    form {
+        width: 80%; 
+        margin: auto;
+    }
+    input[type="text"], input[type="email"] {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        box-sizing: border-box;
+    }
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1 style="text-align: center;"><b>Registration Form</b></h1><br><br>
+    <fieldset>
+        <form action="Registration" method="post">
+            UserName<input type="text" name="Name" placeholder="Enter your name" required><br><br>
+            Password<input type="text" name="Password" placeholder="Enter your password"  required><br><br>
+            Confirm Password<input type="text" name="Password" placeholder="Enter your confirm password"  required><br><br>
+            Email<input type="email"  name="Email" placeholder="Enter your EmailId" required /><br><br>
+            Gender:<br>
+            <input type="radio" name="gender" value="male" required> Male<br>
+            <input type="radio" name="gender" value="female" required> Female<br><br>
+            Date of Birth: <input type="date" name="dob" required><br><br>
+            Age<input type="text" name="age" placeholder="Enter your age" required><br><br>
+            Phone number<input type="text" name="phonenumber" placeholder="Enter your phonenumber" size="10" required><br><br>
+            <input type="submit" name="click">
+        </form>
+    </fieldset>
+</div>
+</body>
+</html>
