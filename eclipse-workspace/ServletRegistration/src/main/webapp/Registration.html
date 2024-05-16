@@ -16,6 +16,8 @@
         width: 80%; 
         margin: auto;
     }
+    
+    
     input[type="text"], input[type="email"] {
         width: 100%;
         padding: 10px;
@@ -38,13 +40,10 @@
     <h1 style="text-align: center;"><b>Registration Form</b></h1><br><br>
     <fieldset>
         <form action="Registration" method="post">
-            UserName<input type="text" name="Name" placeholder="Enter your name" required><br><br>
+            UserName<input type="text" pattern="^[A-Za-z]$"name="Name" placeholder="Enter your name" required><br><br>
             Password<input type="text" name="Password" placeholder="Enter your password"  required><br><br>
             Confirm Password<input type="text" name="Password" placeholder="Enter your confirm password"  required><br><br>
             Email<input type="email"  name="Email" placeholder="Enter your EmailId" required /><br><br>
-            Gender:<br>
-            <input type="radio" name="gender" value="male" required> Male<br>
-            <input type="radio" name="gender" value="female" required> Female<br><br>
             Date of Birth: <input type="date" name="dob" required><br><br>
             Age<input type="text" name="age" placeholder="Enter your age" required><br><br>
             Phone number<input type="text" name="phonenumber" placeholder="Enter your phonenumber" size="10" required><br><br>

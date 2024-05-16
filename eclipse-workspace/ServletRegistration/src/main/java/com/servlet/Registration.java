@@ -2,12 +2,18 @@ package com.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+
+import com.model.UserRegistration;
 
 /**
  * Servlet implementation class Registration
@@ -15,10 +21,13 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/Registration")
 public class Registration extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	ArrayList<UserRegistration>list=new ArrayList<UserRegistration>();
        
     /**
      * @see HttpServlet#HttpServlet()
      */
+	
+	
     public Registration() {
         super();
         // TODO Auto-generated constructor stub
@@ -39,28 +48,23 @@ public class Registration extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 		System.out.println("do Post method");
-		String  UserName= request.getParameter("Name");
-		String Password= request.getParameter("Password");
+		String  userName= request.getParameter("Name");
+		String password= request.getParameter("Password");
 		String confirmPassword= request.getParameter("Password");
-		String Email= request.getParameter("Email");
-		String Gender= request.getParameter("gender");
+		String email= request.getParameter("Email");
+//		String gender= request.getParameter("gender");
 		String dateOfBirth= request.getParameter("dob");
-		String Age= request.getParameter("age");
-		String Phonenumber= request.getParameter("phonenumber");
-		PrintWriter out= response.getWriter();
-	    out.println(UserName); 
-	    out.println(Password);
-	    out.println(confirmPassword);
-	    out.println(Email); 
-	    out.println(Gender); 
-	    out.println(dateOfBirth); 
-	    out.println(Age); 
-	    out.println(Phonenumber); 
+		String age= request.getParameter("age");
+		String phonenumber= request.getParameter("phonenumber");
+		list.add(new UserRegistration(userName,password,confirmPassword,email,dateOfBirth,age,phonenumber));
+        request.setAttribute("list", list);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("Registration.jsp");
+        dispatcher.forward(request, response);
 
-		
-		
+        }
+
 
 
 	}
+	
 
-}
