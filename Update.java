@@ -2,10 +2,11 @@ package com.DAO;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,24 +14,24 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import com.model.EmployeeRegistrationForm;
+import com.util.EmployeeRegistrationConnection;
 
 /**
- * Servlet implementation class EmployeeServlet
+ * Servlet implementation class Update
  */
-@WebServlet("/EmployeeServlet")
-
-public class EmployeeServlet extends HttpServlet {
-
+@WebServlet("/Update")
+public class Update extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	List<EmployeeRegistrationForm> list = new ArrayList<EmployeeRegistrationForm>();
 	EmployeeRegistrationForm employee = new EmployeeRegistrationForm();
 	EmployeeImplements implement = new EmployeeImplements();
+	List<EmployeeRegistrationForm> list = new ArrayList<>();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public EmployeeServlet() {
+	public Update() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -42,7 +43,7 @@ public class EmployeeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -53,7 +54,6 @@ public class EmployeeServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		System.out.println("do Post method");
 		String Name = request.getParameter("Name");
 		employee.setName(Name);
 		String Password = request.getParameter("Password");
@@ -64,34 +64,40 @@ public class EmployeeServlet extends HttpServlet {
 		employee.setPhoneNumber(PhoneNumber);
 
 		try {
-			implement.registration(employee);
+			implement.update(employee);
 			PrintWriter writer = response.getWriter();
-			writer.println(employee.getName() + "added");
-			writer.println(employee.getPassword() + "added");
-			writer.println(employee.getMail_Id() + "added");
-			writer.println(employee.getPhoneNumber() + "added");
+			writer.println(employee.getName() + "updated\n" + employee.getPassword() + "updated\n"
+					+ employee.getMail_Id() + "updated\n" + employee.getPhoneNumber() + "updated\n");
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
 
-		try {
-			listUser(request, response);
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+		String action = request.getParameter("action");
+		if (action != null) {
+			switch (action) {
+			case "update":
+				try {
+					update(request, response);
+				} catch (ClassNotFoundException | SQLException e) {
+					e.printStackTrace();
+				}
+				break;
+
+			}
 		}
 
-		list.add(new EmployeeRegistrationForm(Name, Password, Mail_Id, PhoneNumber));
-		request.setAttribute("list", list);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("EmployeeRegistrationJSP.jsp");
-		dispatcher.forward(request, response);
 	}
 
-	public void listUser(HttpServletRequest request, HttpServletResponse response)
-			throws IOException, SQLException, ClassNotFoundException, ServletException {
-		List<EmployeeRegistrationForm> list = implement.read1EmployeeData();
-		request.setAttribute("list", list);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("EmployeeRegistrationJSP.jsp");
-		dispatcher.forward(request, response);
+	public void update(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, ClassNotFoundException, SQLException {
+		String Name = request.getParameter("Name");
+		String Password = request.getParameter("Password");
+		String Mail_Id = request.getParameter("Mail_Id");
+		String PhoneNumber = request.getParameter("PhoneNumber");
+		EmployeeRegistrationForm employee = new EmployeeRegistrationForm(Name, Password, Mail_Id, PhoneNumber);
+		implement.update(employee);
+		response.sendRedirect("list");
+
 	}
 
 }
