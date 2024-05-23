@@ -52,6 +52,11 @@ public class DeleteServlet extends HttpServlet {
 		doGet(request, response);
 		String Name = request.getParameter("Name");
 		employee.setName(Name);
+		
+		
+		
+		
+		
 
 		try {
 			implement.deleteEmployeeData(Name);

@@ -87,6 +87,12 @@ public class Update extends HttpServlet {
 		}
 
 	}
+	
+	
+	
+	
+	
+	
 
 	public void update(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, ClassNotFoundException, SQLException {
@@ -96,7 +102,7 @@ public class Update extends HttpServlet {
 		String PhoneNumber = request.getParameter("PhoneNumber");
 		EmployeeRegistrationForm employee = new EmployeeRegistrationForm(Name, Password, Mail_Id, PhoneNumber);
 		implement.update(employee);
-		response.sendRedirect("list");
+		response.sendRedirect("EmployeeRegistrationJSP.jsp");
 
 	}
 

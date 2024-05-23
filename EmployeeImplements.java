@@ -23,6 +23,9 @@ public class EmployeeImplements implements EmployeeDAO {
 		System.out.println(rows + "rowsinserted");
 		connection.close();
 		ps.close();
+		
+		
+		
 	}
 
 	public void delete(String Name) throws ClassNotFoundException, SQLException {

@@ -22,6 +22,14 @@ public class EmployeeRegistrationForm {
 				+ ", getMail_Id()=" + getMail_Id() + ", getPhoneNumber()=" + getPhoneNumber() + "]";
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
 
 	public String getPassword() {
 		return Password;
