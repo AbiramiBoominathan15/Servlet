@@ -1,4 +1,5 @@
 package com.DAO;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.model.EmployeeRegistrationForm;
 import com.util.EmployeeRegistrationConnection;
+
 public class EmployeeImplements implements EmployeeDAO {
 	public void registration(EmployeeRegistrationForm employee) throws ClassNotFoundException, SQLException {
 		Connection connection = EmployeeRegistrationConnection.getConnection();
@@ -20,8 +22,6 @@ public class EmployeeImplements implements EmployeeDAO {
 		System.out.println(rows + "rowsinserted");
 		connection.close();
 		ps.close();
-
-
 
 	}
 
@@ -53,6 +53,7 @@ public class EmployeeImplements implements EmployeeDAO {
 		}
 		return users;
 	}
+
 	// Read end
 	public void update(EmployeeRegistrationForm employee) throws ClassNotFoundException, SQLException {
 		String save = " UPDATE EmployeeDetails SET Password=?, Mail_Id = ?, PhoneNumber=? WHERE Name = ?";
@@ -68,6 +69,7 @@ public class EmployeeImplements implements EmployeeDAO {
 			connection.close();
 		}
 	}
+
 	public boolean deleteEmployeeData(String Name) throws ClassNotFoundException, SQLException {
 		boolean rowDeleted;
 		String deleteEmployeeData = "delete from EmployeeDetails where Name=?";
@@ -81,4 +83,3 @@ public class EmployeeImplements implements EmployeeDAO {
 		return rowDeleted;
 	}
 }
-  
