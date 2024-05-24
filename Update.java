@@ -62,48 +62,71 @@ public class Update extends HttpServlet {
 		employee.setMail_Id(Mail_Id);
 		String PhoneNumber = request.getParameter("PhoneNumber");
 		employee.setPhoneNumber(PhoneNumber);
+        
+        try {
+        	implement.update(employee);
+            
+        }
+        catch(ClassNotFoundException | SQLException e){
+            e.printStackTrace();
+        }
+        try {
+            list=implement.read1EmployeeData();    
+            
+            
+             
+        }
+        catch (ClassNotFoundException | SQLException e) {
+              
+               e.printStackTrace();
+           }
+        request.setAttribute("list", list);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("EmployeeRegistrationJSP.jsp");
+        dispatcher.forward(request, response);
+    }
 
-		try {
-			implement.update(employee);
-			PrintWriter writer = response.getWriter();
-			writer.println(employee.getName() + "updated\n" + employee.getPassword() + "updated\n"
-					+ employee.getMail_Id() + "updated\n" + employee.getPhoneNumber() + "updated\n");
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
-
-		String action = request.getParameter("action");
-		if (action != null) {
-			switch (action) {
-			case "update":
-				try {
-					update(request, response);
-				} catch (ClassNotFoundException | SQLException e) {
-					e.printStackTrace();
-				}
-				break;
-
-			}
-		}
-
-	}
-	
-	
-	
-	
-	
-	
-
-	public void update(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException, ClassNotFoundException, SQLException {
-		String Name = request.getParameter("Name");
-		String Password = request.getParameter("Password");
-		String Mail_Id = request.getParameter("Mail_Id");
-		String PhoneNumber = request.getParameter("PhoneNumber");
-		EmployeeRegistrationForm employee = new EmployeeRegistrationForm(Name, Password, Mail_Id, PhoneNumber);
-		implement.update(employee);
-		response.sendRedirect("EmployeeRegistrationJSP.jsp");
-
-	}
-
+//		try {
+//			implement.update(employee);
+//			PrintWriter writer = response.getWriter();
+//			writer.println(employee.getName() + "updated\n" + employee.getPassword() + "updated\n"
+//					+ employee.getMail_Id() + "updated\n" + employee.getPhoneNumber() + "updated\n");
+//		} catch (ClassNotFoundException | SQLException e) {
+//			e.printStackTrace();
+//		}
+//
+//		String action = request.getParameter("action");
+//		if (action != null) {
+//			switch (action) {
+//			case "update":
+//				@SuppressWarnings("unused") 
+//				String name = request.getParameter(Name);
+//				employee.setName(Name);
+//				try {
+//					update(request, response);
+//				} catch (ClassNotFoundException | SQLException e) {
+//					e.printStackTrace();
+//				}
+//				break;
+//
+//			}
+//			request.setAttribute("list", list);
+//			RequestDispatcher dispatcher = request.getRequestDispatcher("EmployeeRegistrationJSP.jsp");
+//			dispatcher.forward(request, response);
+//
+//		}
+//
+//	}
+//
+//	public void update(HttpServletRequest request, HttpServletResponse response)
+//			throws ServletException, IOException, ClassNotFoundException, SQLException {
+//		String Name = request.getParameter("Name");
+//		String Password = request.getParameter("Password");
+//		String Mail_Id = request.getParameter("Mail_Id");
+//		String PhoneNumber = request.getParameter("PhoneNumber");
+//		EmployeeRegistrationForm employee = new EmployeeRegistrationForm(Name, Password, Mail_Id, PhoneNumber);
+//		implement.update(employee);
+//		response.sendRedirect("EmployeeRegistrationJSP.jsp");
+//
+//	}
+//
 }

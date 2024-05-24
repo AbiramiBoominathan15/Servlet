@@ -88,6 +88,7 @@ public class EmployeeServlet extends HttpServlet {
 		request.setAttribute("list", list);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("EmployeeRegistrationJSP.jsp");
 		dispatcher.forward(request, response);
+		
 	}
 
 	public void listUser(HttpServletRequest request, HttpServletResponse response)
