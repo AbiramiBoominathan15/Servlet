@@ -32,10 +32,7 @@ public class EmployeeServlet extends HttpServlet {
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public EmployeeServlet() {
-		
-		
-		
-		
+
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -54,60 +51,55 @@ public class EmployeeServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	        throws ServletException, IOException {
+
+	    String Name = request.getParameter("Name");
+	    String Password = request.getParameter("Password");
+	    String Mail_Id = request.getParameter("Mail_Id");
+	    String PhoneNumber = request.getParameter("PhoneNumber");
+
+	    EmployeeRegistrationForm employee = new EmployeeRegistrationForm(Name, Password, Mail_Id, PhoneNumber);
+
+	    try {
+	        implement.registration(employee);
+
+	        HttpSession session = request.getSession();
+	        session.setAttribute("Name", Name);
+
+	        Cookie nameCookie = new Cookie("Name", Name);
+	        Cookie passwordCookie = new Cookie("Password", Password);
+	        Cookie mailCookie = new Cookie("Mail_Id", Mail_Id);
+	        Cookie phoneCookie = new Cookie("PhoneNumber", PhoneNumber);
+
+	        response.addCookie(nameCookie);
+	        response.addCookie(passwordCookie);
+	        response.addCookie(mailCookie);
+	        response.addCookie(phoneCookie);
+
+	        PrintWriter writer = response.getWriter();
+	        writer.println(employee.getName() + " added");
+	        writer.println(employee.getPassword() + " added");
+	        writer.println(employee.getMail_Id() + " added");
+	        writer.println(employee.getPhoneNumber() + " added");
+	    } catch (SQLException | ClassNotFoundException e) {
+	        e.printStackTrace();
+	    }
+
+	    listUser(request, response);
+
+	    List<EmployeeRegistrationForm> list = new ArrayList<>();
+	    list.add(employee);
+	    request.setAttribute("list", list);
+
+	    RequestDispatcher dispatcher = request.getRequestDispatcher("EmployeeRegistrationJSP.jsp");
+	    dispatcher.forward(request, response);
+	}
+
+	private void listUser(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		doGet(request, response);
-		System.out.println("do Post method");
-		String Name = request.getParameter("Name");
-		System.out.print("Welcome "+Name);  
-		  
-	    Cookie ck=new Cookie("Name",Name);  
-	    response.addCookie(ck);
-
-		employee.setName(Name);
-		String Password = request.getParameter("Password");
-		employee.setPassword(Password);
-		String Mail_Id = request.getParameter("Mail_Id");
-		employee.setMail_Id(Mail_Id);
-		String PhoneNumber = request.getParameter("PhoneNumber");
-		employee.setPhoneNumber(PhoneNumber);
-		
-
-		try {
-			implement.registration(employee);
-            HttpSession session = request.getSession();
-            session.setAttribute("Name",Name);
-
-			PrintWriter writer = response.getWriter();
-
-			writer.println(employee.getName() + "added");
-			writer.println(employee.getPassword() + "added");
-			writer.println(employee.getMail_Id() + "added");
-			writer.println(employee.getPhoneNumber() + "added");
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
-
-		try {
-			listUser(request, response);
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
-
-		list.add(new EmployeeRegistrationForm(Name, Password, Mail_Id, PhoneNumber));
-		request.setAttribute("list", list);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("EmployeeRegistrationJSP.jsp");
-		dispatcher.forward(request, response);
 		
 	}
-
-	public void listUser(HttpServletRequest request, HttpServletResponse response)
-			throws IOException, SQLException, ClassNotFoundException, ServletException {
-		List<EmployeeRegistrationForm> list = implement.read1EmployeeData();
-		request.setAttribute("list", list);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("EmployeeRegistrationJSP.jsp");
-		dispatcher.forward(request, response);
-	}
-
 }
