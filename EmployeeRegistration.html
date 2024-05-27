@@ -4,56 +4,69 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <style>
- body {
-        background-color: skyblue;
-    }
-    .container {
-        width: 50%; 
-        margin: auto;
-        padding: 20px;
-    }
-    form {
-        width: 80%; 
-        margin: auto;
-    }
-    
-    
-    input[type="text"] {
-        width: 100%;
-        padding: 10px;
-        margin: 5px 0;
-        box-sizing: border-box;
-    }
-        input[type="password"] {
-        width: 100%;
-        padding: 10px;
-        margin: 5px 0;
-        box-sizing: border-box;
-    }
-    
-    input[type="submit"] {
-        width: 100%;
-        padding: 10px;
-        margin-top: 10px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        cursor: pointer;
-    }
+body {
+	background-color: skyblue;
+}
+
+.container {
+	width: 50%;
+	margin: auto;
+	padding: 20px;
+}
+
+form {
+	width: 80%;
+	margin: auto;
+}
+
+input[type="text"], input[type="password"] {
+	width: 100%;
+	padding: 10px;
+	margin: 5px 0;
+	box-sizing: border-box;
+}
+
+input[type="submit"] {
+	width: 100%;
+	padding: 10px;
+	margin-top: 10px;
+	background-color: #4CAF50;
+	color: white;
+	border: none;
+	cursor: pointer;
+}
+
+footer {
+	margin-top: 20px;
+	text-align: center;
+}
+
+.footer-buttons {
+	display: inline-block;
+	margin: 0 10px;
+}
 </style>
 </head>
 <body>
-<div class="container">
-    <h1 style="text-align: center;"><b>Registration Form</b></h1><br><br>
-    <fieldset>
-        <form action="EmployeeServlet" method="post">
-            Name<input type="text"name="Name" placeholder="Enter your name" required><br><br>
-            Password<input type="password" name="Password" placeholder="Enter your password"  required><br><br>
-            Mail_Id<input type="text" name="Mail_Id" placeholder="Enter your MailId"  required><br><br>
-            PhoneNumber<input type="text" name="PhoneNumber" placeholder="Enter your Phonenumber"  required><br><br>
-            <input type="submit" name="click">
-</form>
-</fieldset>
-</div>
+	<div class="container">
+		<h1 style="text-align: center;">
+			<b>Registration Form</b>
+		</h1>
+		<br>
+		<br>
+		<fieldset>
+			<form action="EmployeeServlet" method="post">
+				Name<input type="text" name="Name" placeholder="Enter your name"
+					required><br>
+				<br> Password<input type="password" name="Password"
+					placeholder="Enter your password" required><br>
+				<br> Mail_Id<input type="text" name="Mail_Id"
+					placeholder="Enter your MailId" required><br>
+				<br> PhoneNumber<input type="text" name="PhoneNumber"
+					placeholder="Enter your Phonenumber" required><br>
+				<br> <input type="submit" name="click">
+			</form>
+		</fieldset>
+	</div>
 </body>
 </html>

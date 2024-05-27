@@ -69,6 +69,44 @@ public class EmployeeImplements implements EmployeeDAO {
 			connection.close();
 		}
 	}
+	public List<EmployeeRegistrationForm> search(String Name) throws ClassNotFoundException, SQLException {
+		List<EmployeeRegistrationForm> users = new ArrayList<>();
+		System.out.println(Name);
+		Connection connection = EmployeeRegistrationConnection.getConnection();
+		String updateEmployeeData = "select * from EmployeeDetails where Name=?";
+		PreparedStatement ps = connection.prepareStatement(updateEmployeeData);
+		ps.setString(1, Name);
+		try {
+			System.out.println(ps);
+
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				String name = rs.getString("Name");
+				String Password = rs.getString("Password");
+				String Mail_Id = rs.getString("Mail_Id");
+				String PhoneNumber = rs.getString("PhoneNumber");
+				users.add(new EmployeeRegistrationForm(name, Password, Mail_Id, PhoneNumber));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return users;
+	}
+
+//	public void search(EmployeeRegistrationForm employee) throws ClassNotFoundException, SQLException {
+//		String save = "select * from EmployeeDetails where Name=?";
+//		try (Connection connection = EmployeeRegistrationConnection.getConnection();
+//				PreparedStatement p = connection.prepareStatement(save);) {
+//			p.setString(1, employee.getPassword());
+//			p.setString(2, employee.getMail_Id());
+//			p.setString(3, employee.getPhoneNumber());
+//			p.setString(4, employee.getName());
+//			int rows = p.executeUpdate();
+//			System.out.println(rows + "rows search");
+//			p.close();
+//			connection.close();
+//		}
+//	}
 
 	public boolean deleteEmployeeData(String Name) throws ClassNotFoundException, SQLException {
 		boolean rowDeleted;

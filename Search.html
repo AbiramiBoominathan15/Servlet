@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+    body {
+        background-color: skyblue;
+        font-family: Arial, sans-serif;
+    }
+    form {
+        width: 50%;
+        margin: auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    input[type="text"] {
+        width: calc(100% - 22px);
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: skyblue;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+    <form action="SearchServlet" method="post">
+        <div style="text-align: center;">
+            <h2>Search Form</h2>
+            <label for="Name">Enter the name</label><br>
+            <input type="text" id="Name" name="Name"><br>
+            <input type="submit" value="Search">
+        </div>
+    </form>
+</body>
+</html>
