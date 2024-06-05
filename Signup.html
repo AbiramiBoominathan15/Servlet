@@ -1,4 +1,4 @@
-</html><!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -54,13 +54,18 @@
         <br>
         <br>
         <fieldset>
-            <form action="UserUpdateServlet" method="post">
+            <form action="AdminLoginServlet" method="post">
                 Name<input type="text" name="name" placeholder="Enter your name" pattern="[A-Z a-z 0-9]{10}" required><br><br>
                 PhoneNumber<input type="text" name="phonenumber" placeholder="Enter your Phonenumber" required><br><br>
+                City<input type="text" name="city" placeholder="Enter your city" required><br><br>
                 Password<input type="password" name="password" placeholder="Enter your password" pattern="[a-z 0-9]{10}" required><br><br>
-               City<input type="text" name="city" placeholder="Enter your city" required><br><br>
-                MailId<input type="text" name="mailId" placeholder="Enter your MailId" required><br><br>
-                <input type="submit" name="click">                
+                Mail_Id<input type="text" name="mailId" placeholder="Enter your MailId" required><br><br>
+                <input type="hidden" name="action" value="register">
+                <input type="submit" name="click">
+                            <footer>
+                <span class="footer-buttons" color:violet>Already have an account? <a href="LoginPage.html">Login</a></span>
+            </footer>
+                
             </form>
             
         </fieldset>
